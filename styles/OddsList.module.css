@@ -1,0 +1,38 @@
+.container {
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+}
+.desc {
+    font-size: 24px;
+    color: #444;
+    width: 70%;
+    text-align: center;
+    color:white;
+    margin: 20px 0;
+}
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.matchup {
+    border-bottom: white 5px solid;
+    border-collapse: collapse;
+}
+
+@media screen and (max-width: 768px) {
+    .title{
+        text-align: center;
+    }
+    .desc{
+        width: 90%;
+        text-align: center;
+    }
+
+}

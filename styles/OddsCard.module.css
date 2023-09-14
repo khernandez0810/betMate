@@ -1,0 +1,60 @@
+.container {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    padding: 20px 40px;
+    cursor: pointer;
+    list-style: none;
+}
+
+   
+.date {
+    color: red;
+    padding-bottom: 2%;
+
+}
+.trTitle {
+    font-size: 25px;
+    margin-bottom: 10px;
+
+    
+}
+
+.tr {
+    padding: 50px;
+}
+.teamText {
+    font-size: 23px;
+}
+.team {
+    font-size: 15px;
+    border-spacing: 30px;
+}
+.matchup {
+    margin-top: 50px;
+border-spacing: 30px;
+}
+.table {
+        width: 100%;
+        border-spacing: 40%;
+        border-collapse: collapse;
+        margin:20px;
+        text-align: left;
+}
+.tbody {
+    padding: 100px;
+}
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+    .title {
+        font-size: 30px;
+    }
+    .price {
+        font-size: 25px;
+    }
+    .desc {
+        font-size: 20px;
+    }
+}
