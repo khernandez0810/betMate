@@ -1,5 +1,5 @@
 import dbConnect from "@/config/connection";
-import Order from "../../../models/Order";
+import User from "../../../models/User.js";
 
 
 const handler = async (req,res) => {
@@ -9,8 +9,8 @@ await dbConnect();
 
     if(method === "GET"){
         try {
-            const orders = await Order.find();
-            res.status(200).json(orders)
+            const users = await User.find();
+            res.status(200).json(users)
         } catch (err) {
             res.status(500).json(err)
         }
@@ -18,8 +18,8 @@ await dbConnect();
     }
     if(method === "POST"){
         try {
-            const order = await Order.create(req.body);
-            res.status(201).json(order)
+            const user = await User.create(req.body);
+            res.status(201).json(user)
         } catch (err) {
             res.status(500).json(err)
         }

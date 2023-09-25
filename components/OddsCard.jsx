@@ -35,19 +35,19 @@ const formatDate = (dateTimeString) => {
         <tr className={styles.team}>
         <td className={styles.teamText}>
           <p>
-            {games.bookmakers[0].markets[0].outcomes[1].name}
+            {games.bookmakers[0]?.markets[0]?.outcomes[1]?.name || "NA"}
           </p>
         </td>
-        <td className={styles.moneyLine}>{games.bookmakers[0].markets[0].outcomes[1].price}</td>
-        <td>{games.bookmakers[0].markets[1].outcomes[1].point}</td>
-        <td>-{games.bookmakers[0].markets[2].outcomes[1].point}</td>
+        <td className={styles.moneyLine}>{games.bookmakers[0]?.markets[0]?.outcomes[1]?.price || "NA"}</td>
+        <td>{games.bookmakers[0]?.markets[1]?.outcomes[1]?.point || "NA"}</td>
+        <td>-{games.bookmakers[0]?.markets[2]?.outcomes[1]?.point || "NA"}</td>
         </tr>
         <tr className={styles.team}>
-        <td className={styles.teamText}>{games.bookmakers[0].markets[0].outcomes[0].name}</td>
+        <td className={styles.teamText}>{games.bookmakers[0]?.markets[0]?.outcomes[0]?.name || "NA"}</td>
         
-        <td className={styles.moneyLine}>{games.bookmakers[0].markets[0].outcomes[0].price}</td>
-        <td>{games.bookmakers[0].markets[1].outcomes[0].point}</td>
-        <td>+{games.bookmakers[0].markets[2].outcomes[0].point}</td>
+        <td className={styles.moneyLine}>{games.bookmakers[0]?.markets[0]?.outcomes[0]?.price || "NA"}</td>
+        <td>{games.bookmakers[0]?.markets[1]?.outcomes[0]?.point || "NA"}</td>
+        <td>+{games.bookmakers[0]?.markets[2]?.outcomes[0]?.point || "NA"}</td>
         </tr>
       </tbody>
       </table>

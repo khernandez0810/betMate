@@ -1,11 +1,22 @@
 import styles from "../styles/Navbar.module.css";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { connect } from 'react-redux'
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const router = useRouter();
+  const [isLoggedIn, setLoggedIn] = useState(false); 
+
+ useEffect (() => {
+  const token = localStorage.getItem('token');
+  if(token) {
+    setLoggedIn(true);
+  } else {
+    setLoggedIn(false)
+  }
+}, [])
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -14,8 +25,6 @@ const Navbar = () => {
   const hideMenu = () => {
     setShowMenu(false);
   };
-
-  const router = useRouter();
 
   return (
     <div className={styles.container}>
@@ -27,14 +36,26 @@ const Navbar = () => {
           <div className={styles.text}>Bet Mate</div>
         </div>
       </div>
+      
       <div className={styles.item}>
         <ul className={`${styles.list} ${showMenu ? styles.show : ""}`}>
-          <Link href="/" passHref>
+          <Link href="/home" passHref>
+            {/* You can add a Home link here if needed */}
           </Link>
-          <Link href="/sportsbook" passHref>
+          <Link href="/home" passHref>
             <li
               className={
-                router.pathname === "/sportsbook" ? `${styles.listItem} ${styles.active}` : styles.listItem
+                router.pathname === "/home" ? `${styles.listItem} ${styles.active}` : styles.listItem
+              }
+              onClick={hideMenu}
+            >
+              Home
+            </li>
+          </Link>
+          <Link href="/odds" passHref>
+            <li
+              className={
+                router.pathname === "/odds" ? `${styles.listItem} ${styles.active}` : styles.listItem
               }
               onClick={hideMenu}
             >
@@ -63,14 +84,34 @@ const Navbar = () => {
           </Link>
         </ul>
       </div>
-      <Link href="/cart" passHref>
-        <div className={styles.item}>
-          <div className={styles.cart}>
+      
+      {isLoggedIn && (
+        <Link href="/profile" passHref>
+          <div className={styles.item}>
+            <div className={styles.cart}>
+              Profile
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      )}
+
+      {!isLoggedIn && (
+        <Link href="/login" passHref>
+          <div className={styles.item}>
+            <div className={styles.cart}>
+              Log In
+            </div>
+          </div>
+        </Link>
+      )}
     </div>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.auth.isLoggedIn,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);
