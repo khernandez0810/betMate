@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/Odds.module.css'
 import Features from '@/components/Features'
 import {  useState } from 'react';
 import axios from 'axios'
@@ -23,7 +23,6 @@ export default function Home({ pizzaList, admin }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Features/>
     </div>
   )
 }

@@ -1,0 +1,212 @@
+/* Odds.module.css */
+
+/* ---------- Theme Tokens ---------- */
+.container {
+  --bg0: #070a12;
+  --bg1: #0b1020;
+  --card: rgba(255, 255, 255, 0.06);
+  --card2: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.10);
+  --border2: rgba(255, 255, 255, 0.16);
+
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.64);
+  --faint: rgba(255, 255, 255, 0.40);
+
+  --accent: #22d3ee; /* cyan */
+  --accent2: #a78bfa; /* violet */
+  --good: #34d399;
+
+  --radius: 16px;
+  --radius2: 999px;
+
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 700px at 10% 0%, rgba(167, 139, 250, 0.18), transparent 55%),
+    radial-gradient(900px 600px at 90% 10%, rgba(34, 211, 238, 0.16), transparent 55%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+  padding: clamp(18px, 3vw, 36px);
+}
+
+/* Optional: if you wrap things in a max-width layout */
+.container > * {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Sub Nav (Sport Selector) ---------- */
+.subNav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px;
+  margin-bottom: 18px;
+
+  background: rgba(10, 14, 30, 0.55);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 6px);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+/* Buttons */
+.subNav button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 10px 14px;
+  border-radius: var(--radius2);
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+
+  transition:
+    transform 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    color 140ms ease;
+}
+
+.subNav button:hover {
+  cursor: pointer;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+}
+
+.subNav button:active {
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+/* Accessible focus */
+.subNav button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 4px rgba(34, 211, 238, 0.22),
+    0 0 0 1px rgba(34, 211, 238, 0.65) inset;
+  border-color: rgba(34, 211, 238, 0.5);
+}
+
+/* Active tab */
+.active {
+  color: var(--text);
+  background:
+    linear-gradient(90deg, rgba(34, 211, 238, 0.22), rgba(167, 139, 250, 0.18));
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow:
+    0 10px 26px rgba(0,0,0,0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Icon sizing tweaks */
+.mma {
+  transform: translateY(1px);
+  font-size: 20px !important;
+}
+
+/* ---------- Utility / Old Classes (kept so your imports don’t break) ---------- */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 100vh;
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 12px 14px;
+  margin: 12px 0 18px;
+
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.card {
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+}
+
+.card h2 {
+  margin: 0 0 6px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 14px;
+  }
+
+  .subNav {
+    justify-content: flex-start;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .subNav button {
+    padding: 10px 12px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .subNav button {
+    transition: none;
+  }
+}

@@ -3,7 +3,6 @@
     padding: 10px;
     display: flex;
     padding: 20px 40px;
-    cursor: pointer;
     list-style: none;
 }
 
@@ -17,7 +16,6 @@
     font-size: 25px;
     margin-bottom: 10px;
 
-    
 }
 
 .tr {

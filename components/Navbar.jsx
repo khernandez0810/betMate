@@ -43,14 +43,6 @@ const Navbar = () => {
             {/* You can add a Home link here if needed */}
           </Link>
           <Link href="/home" passHref>
-            <li
-              className={
-                router.pathname === "/home" ? `${styles.listItem} ${styles.active}` : styles.listItem
-              }
-              onClick={hideMenu}
-            >
-              Home
-            </li>
           </Link>
           <Link href="/odds" passHref>
             <li
@@ -60,16 +52,6 @@ const Navbar = () => {
               onClick={hideMenu}
             >
               Odds
-            </li>
-          </Link>
-          <Link href="/events" passHref>
-            <li
-              className={
-                router.pathname === "/events" ? `${styles.listItem} ${styles.active}` : styles.listItem
-              }
-              onClick={hideMenu}
-            >
-              Events
             </li>
           </Link>
           <Link href="/contact" passHref>
@@ -82,10 +64,7 @@ const Navbar = () => {
               Contact
             </li>
           </Link>
-        </ul>
-      </div>
-      
-      {isLoggedIn && (
+          {isLoggedIn && (
         <Link href="/profile" passHref>
           <div className={styles.item}>
             <div className={styles.cart}>
@@ -94,6 +73,9 @@ const Navbar = () => {
           </div>
         </Link>
       )}
+        </ul>
+      </div>
+      
 
       {!isLoggedIn && (
         <Link href="/login" passHref>
